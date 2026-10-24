@@ -1,0 +1,31 @@
+[project]
+name = "enterprise-excel-ai-copilot"
+version = "0.1.0"
+description = "Portfolio MVP: governed Excel ingestion, data quality, reporting and natural-language report export."
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.30,<1",
+    "python-multipart>=0.0.20,<1",
+    "sqlalchemy>=2.0,<3",
+    "psycopg[binary]>=3.2,<4",
+    "openpyxl>=3.1,<4",
+    "pandas>=2.2,<3",
+    "xlsxwriter>=3.2,<4",
+    "httpx>=0.27,<1",
+]
+[project.optional-dependencies]
+test = ["pytest>=8,<10", "httpx>=0.27,<1"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.setuptools.package-data]
+app = ["static/*.html", "static/*.css", "static/*.js"]
